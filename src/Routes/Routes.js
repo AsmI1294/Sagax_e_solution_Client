@@ -16,7 +16,15 @@ export const routes = createBrowserRouter([
         element: <SubMain></SubMain>,
         children: [
           { path: "/courses", element: <Categories></Categories> },
-          { path: "/courses/category", element: <Courses></Courses> },
+          {
+            path: "/courses/:id",
+            element: <Courses></Courses>,
+            loader: ({ params }) => {
+              return fetch(
+                `https://sagax-e-solution.vercel.app/courses/${params.id}`
+              );
+            },
+          },
         ],
       },
     ],
