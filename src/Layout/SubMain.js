@@ -9,10 +9,10 @@ const SubMain = () => {
     <div>
       <Container fluid>
         <Row>
-          <Col xs={2} className="px-0">
+          <Col lg={2} className="px-0 d-none d-lg-block">
             <CoursesLeftNav></CoursesLeftNav>
           </Col>
-          <Col xs={10}>
+          <Col lg={10} xs={12}>
             <Outlet></Outlet>
           </Col>
         </Row>
