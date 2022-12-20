@@ -70,7 +70,7 @@ const Footer = () => {
       <Container className="border-top mb-4">
         <Row className="mt-4">
           <Col className="mt-1 text-center" xs={12} md={6}>
-            Copyright © 2019 DesignThemes. All Rights Reserved
+            Copyright © 2022 Asm Themes. All Rights Reserved
           </Col>
           <Col className="d-flex justify-content-center" xs={12} md={6}>
             <Link className="border-end ">
