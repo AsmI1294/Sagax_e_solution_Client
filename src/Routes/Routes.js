@@ -6,6 +6,8 @@ import CheckOut from "../Pages/CheckOut/CheckOut";
 import Courses from "../Pages/Courses/Courses";
 import EachCoursesCard from "../Pages/EachCoursesCard/EachCoursesCard";
 import Home from "../Pages/Home/Home";
+import Login from "../Pages/LogIn/Login";
+import Register from "../Pages/LogIn/Register";
 
 export const routes = createBrowserRouter([
   {
@@ -53,6 +55,8 @@ export const routes = createBrowserRouter([
           },
         ],
       },
+      { path: "/login", element: <Login></Login> },
+      { path: "/register", element: <Register></Register> },
     ],
   },
 ]);
