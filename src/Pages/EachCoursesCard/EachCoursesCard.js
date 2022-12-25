@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
 import { Link, useLoaderData } from "react-router-dom";
 import { BsCurrencyEuro } from "react-icons/bs";
@@ -8,9 +8,11 @@ import {
   TiStarOutline,
 } from "react-icons/ti";
 import ReactStars from "react-rating-stars-component";
+import { authContext } from "../../AuthProvider/AuthProvider";
 
 const EachCoursesCard = () => {
   const data = useLoaderData();
+  const { theme } = useContext(authContext);
   const stars = {
     size: 24,
     value: parseFloat(data.rating.number),
@@ -23,7 +25,12 @@ const EachCoursesCard = () => {
   console.log(data, "data");
   return (
     <div className="my-3">
-      <Card style={{ cursor: "pointer" }}>
+      <Card
+        style={{
+          cursor: "pointer",
+          backgroundColor: theme == "dark" ? "#343a40" : undefined,
+        }}
+      >
         <Container>
           <Row>
             <Col xs={12} className="px-0">

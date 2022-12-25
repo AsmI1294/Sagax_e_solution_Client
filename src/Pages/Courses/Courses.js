@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Col, Container, Image, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { BsCurrencyEuro } from "react-icons/bs";
@@ -9,10 +9,12 @@ import {
 } from "react-icons/ti";
 import ReactStars from "react-rating-stars-component";
 import { useNavigate } from "react-router-dom";
+import { authContext } from "../../AuthProvider/AuthProvider";
 
 const Courses = ({ data }) => {
   const navigate = useNavigate();
   const [isHover, setHover] = useState(false);
+  const { theme } = useContext(authContext);
   const stars = {
     size: 24,
     value: parseFloat(data.rating.number),
@@ -46,7 +48,12 @@ const Courses = ({ data }) => {
       onMouseLeave={mouseLeave}
       onClick={mouseClick}
     >
-      <Card style={{ cursor: "pointer" }}>
+      <Card
+        style={{
+          cursor: "pointer",
+          backgroundColor: theme == "dark" ? "#343a40" : undefined,
+        }}
+      >
         <Container>
           <Row>
             <Col xs={12} lg={3} className="px-0">

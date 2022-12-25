@@ -8,6 +8,7 @@ import EachCoursesCard from "../Pages/EachCoursesCard/EachCoursesCard";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/LogIn/Login";
 import Register from "../Pages/LogIn/Register";
+import PrivateRouting from "../PrivateRoute/PrivateRouting";
 
 export const routes = createBrowserRouter([
   {
@@ -46,7 +47,11 @@ export const routes = createBrowserRouter([
           },
           {
             path: "/courses/eachCourses/checkOut/:id",
-            element: <CheckOut></CheckOut>,
+            element: (
+              <PrivateRouting>
+                <CheckOut></CheckOut>
+              </PrivateRouting>
+            ),
             loader: ({ params }) => {
               return fetch(
                 `https://sagax-e-solution.vercel.app/eachCourses/${params.id}`

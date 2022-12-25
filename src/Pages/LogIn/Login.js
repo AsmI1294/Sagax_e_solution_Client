@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import { BsGoogle, BsGithub } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
   const { logIn, googleLogin, gitLogin } = useContext(authContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -16,6 +19,7 @@ const Login = () => {
         // Signed in
         console.log("Logged In");
         form.reset();
+        navigate(from, { replace: true });
         // ...
       })
       .catch((error) => {
@@ -28,6 +32,7 @@ const Login = () => {
       .then((result) => {
         console.log("Successfully Logged In");
         console.log(result);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         // Handle Errors here.
@@ -41,6 +46,7 @@ const Login = () => {
       .then((result) => {
         console.log("Successfully Logged In");
         console.log(result);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         // Handle Errors here.
@@ -74,6 +80,7 @@ const Login = () => {
                       type="email"
                       name="email"
                       placeholder="Enter email"
+                      required
                     />
                   </Form.Group>
 
@@ -83,6 +90,7 @@ const Login = () => {
                       type="password"
                       name="password"
                       placeholder="Password"
+                      required
                     />
                   </Form.Group>
                   <div className="my-2">

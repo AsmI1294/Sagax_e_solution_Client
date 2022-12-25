@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import photo1 from "../../Assets/photo1.jpg";
 import photo2 from "../../Assets/photo2.jpg";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { authContext } from "../../AuthProvider/AuthProvider";
 
 const Slider = () => {
+  const { user } = useContext(authContext);
+  const navigate = useNavigate();
+
+  const handlegetStarted = () => {
+    if (user != undefined) {
+      toast("Already Joined");
+    } else {
+      navigate("/register", { replace: true });
+    }
+  };
   return (
     <div>
       <Carousel fade controls={false} indicators={false}>
@@ -25,7 +39,13 @@ const Slider = () => {
               <Button variant="light" className="fs-4">
                 Courses we are offering currently <AiOutlineArrowRight />
               </Button>
-              <Button variant="outline-light" className="fs-4">
+              <Button
+                variant="outline-light"
+                className="fs-4"
+                onClick={() => {
+                  navigate("/courses", { replace: true });
+                }}
+              >
                 Explore courses
               </Button>
             </ButtonGroup>
@@ -51,7 +71,11 @@ const Slider = () => {
               <Button variant="light" className="fs-4">
                 Want to join? <AiOutlineArrowRight />
               </Button>
-              <Button variant="outline-light" className="fs-4">
+              <Button
+                variant="outline-light"
+                className="fs-4"
+                onClick={handlegetStarted}
+              >
                 Get started
               </Button>
             </ButtonGroup>
@@ -63,6 +87,7 @@ const Slider = () => {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+      <ToastContainer />
     </div>
   );
 };

@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { authContext } from "../../AuthProvider/AuthProvider";
 
 const Register = () => {
-  const { user, emailRegister } = useContext(authContext);
-
+  const { emailRegister } = useContext(authContext);
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -14,7 +15,8 @@ const Register = () => {
 
     emailRegister(email, password)
       .then((result) => {
-        console.log(user);
+        console.log(result);
+        navigate("/", { replace: true });
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -47,6 +49,7 @@ const Register = () => {
                       type="text"
                       name="name"
                       placeholder="Enter Name"
+                      required
                     />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -55,6 +58,7 @@ const Register = () => {
                       type="email"
                       name="email"
                       placeholder="Enter email"
+                      required
                     />
                   </Form.Group>
 
@@ -64,6 +68,7 @@ const Register = () => {
                       type="password"
                       name="password"
                       placeholder="Password"
+                      required
                     />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formUrl">
@@ -72,6 +77,7 @@ const Register = () => {
                       type="text"
                       name="url"
                       placeholder=" Enter URL"
+                      required
                     />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicCheckbox">
@@ -79,6 +85,7 @@ const Register = () => {
                       type="checkbox"
                       label="Accept Terms and Conditions"
                       name="checkbox"
+                      required
                     />
                   </Form.Group>
 

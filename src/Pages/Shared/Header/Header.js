@@ -9,7 +9,7 @@ import CoursesLeftNav from "../CoursesLeftNav/CoursesLeftNav";
 import { CgProfile } from "react-icons/cg";
 
 const Header = () => {
-  const { user, logOut } = useContext(authContext);
+  const { user, logOut, setTheme } = useContext(authContext);
 
   const handleLogOut = () => {
     logOut()
@@ -19,6 +19,15 @@ const Header = () => {
       .catch((error) => {
         // An error happened.
       });
+  };
+  const handleTheme = (e) => {
+    if (e.target.checked == true) {
+      document.getElementById("label").innerHTML = "Dark";
+      setTheme("dark");
+    } else {
+      document.getElementById("label").innerHTML = "White";
+      setTheme("white");
+    }
   };
 
   return (
@@ -40,6 +49,24 @@ const Header = () => {
               <Nav.Link as={Link} to="/">
                 FAQ
               </Nav.Link>
+            </Nav>
+            <Nav>
+              <div class="form-check form-switch">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  role="switch"
+                  id="flexSwitchCheckDefault"
+                  onClick={handleTheme}
+                />
+                <label
+                  class="form-check-label me-2 text-light "
+                  for="flexSwitchCheckDefault"
+                  id="label"
+                >
+                  White
+                </label>
+              </div>
             </Nav>
             {user == undefined ? (
               <Nav>
