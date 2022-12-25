@@ -20,11 +20,13 @@ const Login = () => {
         console.log("Logged In");
         form.reset();
         navigate(from, { replace: true });
+        document.getElementById("error").innerHTML = "";
         // ...
       })
       .catch((error) => {
         const errorMessage = error.message;
-        console.log(errorMessage);
+        document.getElementById("error").innerHTML = errorMessage;
+        form.reset();
       });
   };
   const handleGoogle = () => {
@@ -38,7 +40,7 @@ const Login = () => {
         // Handle Errors here.
 
         const errorMessage = error.message;
-        console.log(errorMessage);
+        document.getElementById("error").innerHTML = errorMessage;
       });
   };
   const handleGit = () => {
@@ -52,7 +54,7 @@ const Login = () => {
         // Handle Errors here.
 
         const errorMessage = error.message;
-        console.log(errorMessage);
+        document.getElementById("error").innerHTML = errorMessage;
       });
   };
   return (
@@ -106,6 +108,7 @@ const Login = () => {
                     Submit
                   </Button>
                 </Form>
+                <div id="error" className="text-danger"></div>
                 <Container className="my-2 px-0">
                   <Row className="gx-1">
                     <Col>

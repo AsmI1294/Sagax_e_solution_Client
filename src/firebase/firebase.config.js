@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBf6-vT5XfuHcSUacR3p5n1I19IixTR55s",
+  apiKey: process.env.REACT_APP_apiKey,
   authDomain: "sagax-e-solution.firebaseapp.com",
   projectId: "sagax-e-solution",
   storageBucket: "sagax-e-solution.appspot.com",
   messagingSenderId: "697861562212",
-  appId: "1:697861562212:web:fd04d54e6d6fd21da5a471",
+  appId: process.env.REACT_APP_appId,
 };
 
 // Initialize Firebase
