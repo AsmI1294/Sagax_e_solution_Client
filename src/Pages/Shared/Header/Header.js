@@ -60,7 +60,7 @@ const Header = () => {
                   onClick={handleTheme}
                 />
                 <label
-                  class="form-check-label me-2 text-light "
+                  class="form-check-label me-2 text-secondary "
                   for="flexSwitchCheckDefault"
                   id="label"
                 >

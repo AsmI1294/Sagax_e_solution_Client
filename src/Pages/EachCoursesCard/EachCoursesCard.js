@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
 import { Link, useLoaderData } from "react-router-dom";
 import { BsCurrencyEuro } from "react-icons/bs";
@@ -9,6 +9,8 @@ import {
 } from "react-icons/ti";
 import ReactStars from "react-rating-stars-component";
 import { authContext } from "../../AuthProvider/AuthProvider";
+import { useReactToPrint } from "react-to-print";
+import { toast } from "react-toastify";
 
 const EachCoursesCard = () => {
   const data = useLoaderData();
@@ -22,9 +24,16 @@ const EachCoursesCard = () => {
     halfIcon: <TiStarHalfOutline />,
     emptyIcon: <TiStarOutline />,
   };
-  console.log(data, "data");
+  //print to pdf
+  const compoRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => compoRef.current,
+    documentTitle: data.title,
+    onAfterPrint: () => toast("Printed"),
+  });
+
   return (
-    <div className="my-3">
+    <div className="my-3" ref={compoRef}>
       <Card
         style={{
           cursor: "pointer",
@@ -72,6 +81,13 @@ const EachCoursesCard = () => {
                     </small>
                     <ReactStars {...stars} />
                   </div>
+                  <Button
+                    className="w-50 mx-auto mt-3"
+                    variant="outline-secondary"
+                    onClick={handlePrint}
+                  >
+                    Print to pdf
+                  </Button>
                 </Col>
                 <Col lg={8}>
                   <Card.Img
