@@ -1,4 +1,3 @@
-import { FacebookAuthProvider } from "firebase/auth";
 import React, { useContext } from "react";
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import { authContext } from "../../AuthProvider/AuthProvider";

@@ -9,7 +9,17 @@ import CoursesLeftNav from "../CoursesLeftNav/CoursesLeftNav";
 import { CgProfile } from "react-icons/cg";
 
 const Header = () => {
-  const { user } = useContext(authContext);
+  const { user, logOut } = useContext(authContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        console.log("SuccessFully Logged out");
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
 
   return (
     <div>
@@ -42,12 +52,19 @@ const Header = () => {
               </Nav>
             ) : (
               <Nav>
-                <Nav.Link className="border-end">{user.email}</Nav.Link>
-                <Nav.Link>
+                <Nav.Link className="border-end">
+                  {user.displayName == null ? (
+                    <span className="me-1">
+                      {user.reloadUserInfo.screenName}
+                    </span>
+                  ) : (
+                    <span className="me-1">{user.displayName}</span>
+                  )}
+
                   {user.photoURL ? (
                     <Image
                       src={user.photoURL}
-                      style={{ height: "2rem" }}
+                      style={{ height: "1.7rem" }}
                       roundedCircle
                       className="me-1"
                     ></Image>
@@ -55,6 +72,7 @@ const Header = () => {
                     <CgProfile className="fs-5" />
                   )}
                 </Nav.Link>
+                <Nav.Link onClick={handleLogOut}>Logout</Nav.Link>
               </Nav>
             )}
 

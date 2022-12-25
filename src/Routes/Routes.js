@@ -3,7 +3,7 @@ import Main from "../Layout/Main";
 import SubMain from "../Layout/SubMain";
 import Categories from "../Pages/Categories/Categories";
 import CheckOut from "../Pages/CheckOut/CheckOut";
-import Courses from "../Pages/Courses/Courses";
+
 import EachCoursesCard from "../Pages/EachCoursesCard/EachCoursesCard";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/LogIn/Login";
@@ -58,5 +58,9 @@ export const routes = createBrowserRouter([
       { path: "/login", element: <Login></Login> },
       { path: "/register", element: <Register></Register> },
     ],
+  },
+  {
+    path: "*",
+    element: <div className="display-1"> You have come to wrong path</div>,
   },
 ]);
