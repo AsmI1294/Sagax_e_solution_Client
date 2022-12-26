@@ -25,7 +25,7 @@ const Header = () => {
       document.getElementById("label").innerHTML = "Dark";
       setTheme("dark");
     } else {
-      document.getElementById("label").innerHTML = "White";
+      document.getElementById("label").innerHTML = "Light";
       setTheme("white");
     }
   };
@@ -40,13 +40,16 @@ const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
+              <Nav.Link as={Link} to="/">
+                Home
+              </Nav.Link>
               <Nav.Link as={Link} to="/courses">
                 Courses
               </Nav.Link>
-              <Nav.Link as={Link} to="/">
+              <Nav.Link as={Link} to="/blogs">
                 Blog
               </Nav.Link>
-              <Nav.Link as={Link} to="/">
+              <Nav.Link as={Link} to="/faq">
                 FAQ
               </Nav.Link>
             </Nav>
@@ -64,7 +67,7 @@ const Header = () => {
                   for="flexSwitchCheckDefault"
                   id="label"
                 >
-                  White
+                  Light
                 </label>
               </div>
             </Nav>

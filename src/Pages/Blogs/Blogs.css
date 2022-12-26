@@ -1,0 +1,11 @@
+.accordion-button:not(.collapsed)::after {
+  filter: brightness(0%) invert(70%);
+}
+.accordion-item {
+  background-color: #343a40 !important;
+  color: white !important;
+}
+.accordion-button {
+  background-color: #343a40 !important;
+  color: white !important;
+}

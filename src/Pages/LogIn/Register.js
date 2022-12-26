@@ -34,7 +34,7 @@ const Register = () => {
         height: "100vh",
         backgroundSize: "cover",
       }}
-      className="d-flex align-items-center"
+      className="d-flex align-items-center text-dark"
     >
       <Container>
         <Row>
