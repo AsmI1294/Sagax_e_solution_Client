@@ -10,6 +10,7 @@ import Faq from "../Pages/Faq/Faq";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/LogIn/Login";
 import Register from "../Pages/LogIn/Register";
+import Profile from "../Pages/Profile/Profile";
 import PrivateRouting from "../PrivateRoute/PrivateRouting";
 
 export const routes = createBrowserRouter([
@@ -66,10 +67,18 @@ export const routes = createBrowserRouter([
       { path: "/register", element: <Register></Register> },
       { path: "/blogs", element: <Blogs></Blogs> },
       { path: "/faq", element: <Faq></Faq> },
+      {
+        path: "/profile",
+        element: (
+          <PrivateRouting>
+            <Profile></Profile>
+          </PrivateRouting>
+        ),
+      },
     ],
   },
   {
     path: "*",
-    element: <div className="display-1"> You have come to wrong path</div>,
+    element: <div className="display-1"> 404! You have come to wrong path</div>,
   },
 ]);

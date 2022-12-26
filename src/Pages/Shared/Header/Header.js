@@ -82,7 +82,7 @@ const Header = () => {
               </Nav>
             ) : (
               <Nav>
-                <Nav.Link className="border-end">
+                <Nav.Link className="border-end" as={Link} to="/profile">
                   {user.displayName == null ? (
                     <span className="me-1">
                       {user.reloadUserInfo.screenName}
