@@ -31,12 +31,12 @@ const Register = () => {
       "https://static.vecteezy.com/system/resources/previews/006/667/805/large_2x/black-laptop-computer-cup-of-black-coffee-red-book-and-smartphone-on-white-background-and-wallpaper-top-view-with-copy-space-flat-lay-3d-rendering-free-photo.jpg"
     )`,
         width: "100%",
-        height: "100vh",
+
         backgroundSize: "cover",
       }}
       className="d-flex align-items-center text-dark"
     >
-      <Container>
+      <Container className="my-3">
         <Row>
           <Col lg={{ span: "4" }}>
             <Card className="bg-transparent w-100 shadow">
